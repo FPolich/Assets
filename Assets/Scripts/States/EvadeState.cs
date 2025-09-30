@@ -17,7 +17,6 @@ public class EvadeState : IState
         this.rb = rb;
         this.transform = transform;
     }
-
     public void StateEnter() {  }
     public void StateUpdate()
     {

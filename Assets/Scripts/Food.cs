@@ -1,14 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 public class Food : MonoBehaviour
 {
-    public LayerMask foodMask;
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] private float lifeTime = 5f; // Tiempo que el objeto permanece activo
+
+    private void OnEnable()
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            Destroy(gameObject);
-        }
+        Invoke(nameof(Deactivate), lifeTime);
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
+    }
+
+    private void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 }
